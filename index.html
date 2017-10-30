@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CURA</title>
+
+    <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="toolbar"><button onclick="document.getElementById('file-input').click();">Load File</button></div>
+        <div id="terminal-container"></div>
+    </div>
+    <input id="file-input" type="file" name="name" style="display: none;" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js" type="text/javascript"></script>
+    <script src="asmworker.js" type="text/javascript"></script>
+    <script src="parser.js" type="text/javascript"></script>
+    <script src="terminal.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+</body>
+
+</html>
