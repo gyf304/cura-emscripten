@@ -54,6 +54,52 @@ function repl() {
           })
           return;
         }
+      } else if (parsed[0] == 'rm') {
+        if (parsed.length == 2) {
+          worker.rm(parsed[1])
+          .then(function(){
+            repl();
+          }).catch(function(error){
+            t1.print(error.toString());
+            repl();
+          })
+          return;
+        }
+      } else if (parsed[0] == 'rmdir') {
+        if (parsed.length == 2) {
+          worker.rmdir(parsed[1])
+          .then(function(){
+            repl();
+          }).catch(function(error){
+            t1.print(error.toString());
+            repl();
+          })
+          return;
+        }
+      } else if (parsed[0] == 'mkdir') {
+        if (parsed.length == 2) {
+          worker.mkdir(parsed[1])
+          .then(function(){
+            repl();
+          }).catch(function(error){
+            t1.print(error.toString());
+            repl();
+          })
+          return;
+        }
+      } else if (parsed[0] == 'download') {
+        if (parsed.length == 2) {
+          worker.readFile(parsed[1], {'encoding': 'binary'})
+          .then(function(data){
+            var b = new Blob([data]);
+            saveAs(b, parsed[1].replace('/','-'));
+            repl();
+          }).catch(function(error){
+            t1.print(error.toString());
+            repl();
+          })
+          return;
+        }
       } else if (parsed[0] == 'pwd') {
         if (parsed.length == 1) {
           worker.cwd()
@@ -93,6 +139,8 @@ function repl() {
           })
           return;
         }
+      } else {
+        t1.print(parsed[0] + ' is not supported');
       }
       repl();
     })
